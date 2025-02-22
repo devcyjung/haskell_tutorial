@@ -70,10 +70,9 @@ countValue :: Eq a => a -> [a] -> Integer
 countValue x xs = go 0 xs
     where
         go acc [] = acc
-        go acc (y:ys) =
-            if x == y
-            then go (acc + 1) ys
-            else go acc ys
+        go acc (y:ys)
+            | x == y    = go (acc + 1) ys
+            | otherwise = go acc ys
 
 countValueV2 :: Eq a => a -> [a] -> Integer
 countValueV2 x xs = go 0 xs
@@ -108,7 +107,8 @@ satisfies predicate x
 -- applyTwice (* 3) 4
 -- f(func, x) = func(func(x))
 applyTwice :: (a -> a) -> a -> a
-applyTwice f x = f (f x)
+-- applyTwice f x = f (f x)
+applyTwice f = f . f
 
 -- standard hof
 -- map, filter, any, concatMap, iterate
@@ -125,10 +125,9 @@ twoSumNaive :: (Num a, Eq a) => a -> [a] -> Integer
 twoSumNaive tgt xs = go 0 (concatMap (\x -> map (x +) xs) xs)
     where
         go acc [] = acc
-        go acc (y:ys) =
-            if tgt == y
-            then go (acc + 1) ys
-            else go acc ys
+        go acc (y:ys)
+            | tgt == y  = go (acc + 1) ys
+            | otherwise = go acc ys
 
 firstNExponents :: Natural -> [Natural]
 firstNExponents n = genericTake n (iterate (* 2) 1)
