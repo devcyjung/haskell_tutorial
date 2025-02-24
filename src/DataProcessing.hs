@@ -15,7 +15,7 @@ module DataProcessing (
     RewardChest (..), Dragon (..), reward,
     fromMaybeInt, findFirstFit, myPartitionEithers,
     myShowInt, onlyEven, prodZipList,
-    showLength, wordCountList, wordCountEvennessList, takeEven5,
+    showLength, wordCountList, wordCountEvennessList, takeEven5, myPrint, mapTen,
 ) where
 
 import Numeric.Natural (Natural)
@@ -383,3 +383,11 @@ takeEven5 = take 5 . filter (even . length)
 -- takeEven5 list = take 5 (filter (\l -> (even . length) l) list)
 -- undo function composition
 -- takeEven5 list = take 5 (filter (\l -> even (length l)) list)
+
+-- $ operator removes parenthesis
+myPrint :: Show a => a -> IO ()
+myPrint x = putStrLn $ show $ x -- same as, myPrint = putStrLn(show(x))
+
+-- $ can be used as a function. It's a "function application" function
+mapTen :: [Int -> a] -> [a]
+mapTen = map ($ 10) -- mapTen [(*2), (\x -> 3 - x), (\x -> x - 3)] -> [20, -7, 7]

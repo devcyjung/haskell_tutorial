@@ -28,6 +28,7 @@ library
       DataProcessing
       Fundamental
       Lib
+      TypeClassConcept
   other-modules:
       Paths_sample
   autogen-modules:
