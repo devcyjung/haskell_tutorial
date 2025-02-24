@@ -2,7 +2,7 @@ module Main (
     main
 ) where
 
-import Lib
+import qualified MyLib
 
 main :: IO ()
-main = someFunc
+main = MyLib.main

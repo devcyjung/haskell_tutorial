@@ -27,7 +27,9 @@ library
   exposed-modules:
       DataProcessing
       Fundamental
-      Lib
+      IOPractice
+      MonadConcept
+      MyLib
       TypeClassConcept
   other-modules:
       Paths_sample
